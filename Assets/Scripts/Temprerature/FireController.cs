@@ -27,7 +27,7 @@ public class FireController : MonoBehaviour
     public float maxEmissionMultiplier = 1f;
     
     
-    public float displayEpsilon = 0.02f;
+    // public float displayEpsilon = 0.02f;
     
     public float FirePower => _firePower; // текущая мощность 
 
@@ -68,7 +68,7 @@ public class FireController : MonoBehaviour
         if (Mouse.current == null)
             return 0f;
 
-        // 120 одно деление для скролла
+        // 30 одно деление для скролла
         return Mouse.current.scroll.ReadValue().y / 30f;
     }
     
