@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem; // нужен для Mouse.current
+using System.Collections.Generic;
 
 public class BeanController : MonoBehaviour
 {
@@ -23,9 +24,11 @@ public class BeanController : MonoBehaviour
 
     public float BeanFill => Mathf.Clamp01((float)_beanCount / maxBeans);
     public int BeanCount => _beanCount;
+    public IReadOnlyList<Rigidbody> ActiveBeanBodies => _activeBeanBodies;
 
     private int _beanCount;
     private float _spawnTimer;
+    private readonly List<Rigidbody> _activeBeanBodies = new List<Rigidbody>();
 
     private void Update()
     {
@@ -50,13 +53,12 @@ public class BeanController : MonoBehaviour
 
     private void SpawnBean()
     {
-
-        if (beanPrefabs == null || beanPrefabs.Length == 0) return;
+        if (beanPrefabs == null || beanPrefabs.Length == 0 || spawnPoint == null)
+            return;
 
         Vector2 rand = Random.insideUnitCircle * spawnRadius;
         Vector3 pos = spawnPoint.position + new Vector3(rand.x, 0f, rand.y);
 
-       
         GameObject bean = Instantiate(
             beanPrefabs[Random.Range(0, beanPrefabs.Length)],
             pos,
@@ -71,28 +73,43 @@ public class BeanController : MonoBehaviour
                 col.material = beanMaterial;
         }
 
-   
-        Rigidbody rb = bean.AddComponent<Rigidbody>();
+        Rigidbody rb = bean.GetComponent<Rigidbody>();
+        if (rb == null)
+            rb = bean.AddComponent<Rigidbody>();
+
         rb.mass = beanMass;
         rb.angularDamping = 1f;
 
-        BeanLifetime lifetime = bean.AddComponent<BeanLifetime>();
-        lifetime.Init(this, zoneRadius, spawnPoint);
+        BeanLifetime lifetime = bean.GetComponent<BeanLifetime>();
+        if (lifetime == null)
+            lifetime = bean.AddComponent<BeanLifetime>();
 
-        _beanCount++;
+        lifetime.Init(this, zoneRadius, spawnPoint, rb);
+
+        _activeBeanBodies.Add(rb);
+        _beanCount = _activeBeanBodies.Count;
     }
 
-    public void OnBeanDestroyed()
+    public void OnBeanDestroyed(Rigidbody body = null)
     {
-        _beanCount = Mathf.Max(0, _beanCount - 1);
+        if (body != null)
+            _activeBeanBodies.Remove(body);
+
+        _activeBeanBodies.RemoveAll(existingBody => existingBody == null);
+        _beanCount = _activeBeanBodies.Count;
     }
 
     public void Clear()
     {
-    
         foreach (var bean in FindObjectsByType<BeanLifetime>(FindObjectsSortMode.None))
-            Destroy(bean.gameObject);
+        {
+            if (bean == null || !bean.IsInitialized || bean.Owner != this)
+                continue;
 
+            Destroy(bean.gameObject);
+        }
+
+        _activeBeanBodies.Clear();
         _beanCount = 0;
     }
 }
