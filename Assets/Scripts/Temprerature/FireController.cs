@@ -69,7 +69,7 @@ public class FireController : MonoBehaviour
             return 0f;
 
         // 120 одно деление для скролла
-        return Mouse.current.scroll.ReadValue().y / 120f;
+        return Mouse.current.scroll.ReadValue().y / 30f;
     }
     
     // логика изменения вида огня
