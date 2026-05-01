@@ -2,35 +2,46 @@ using UnityEngine;
 
 public class BeanLifetime : MonoBehaviour
 {
-    public BeanController _beanController;
-    private float _turkaRadius;
-    private Transform _turkaTransform;
 
-    private float checkDelay = 1.2f;
-    private float _alive;
+    public float _turkaRadius;
+    public Transform _turkaTransform;
 
-    public void Init(BeanController beanController, float turkaRadius, Transform turkaTransform)
+    private float _checkDelay = 1.2f;
+    private float _alive = 0f;
+
+    private bool _landed = false;
+
+    public void Init(float turkaRadius, Transform turkaTransform)
     {
-        _beanController = beanController;
+
         _turkaRadius = turkaRadius;
         _turkaTransform = turkaTransform;
     }
 
     private void Update()
     {
+        if (_landed || _turkaTransform == null) return;
+
         _alive += Time.deltaTime;
-        if (_alive < checkDelay || _turkaTransform == null) return;
 
-        if (Vector3.Distance(transform.position, _turkaTransform.position) > _turkaRadius)
+        if (_alive < _checkDelay) return;
+
+        _landed = true;
+
+        bool inTurka = Vector3.Distance(transform.position, _turkaTransform.position) <= _turkaRadius;
+
+        if (inTurka)
         {
-            Destroy(gameObject);
-            _beanController.OnBeanDestroyed();
+            Debug.Log("Bean in turka, destroy");
         }
+
+        else
+        {
+            Debug.Log("Bean outside turka, destroy");
+        }
+
+        Destroy(gameObject);
     }
 
-    private void OnDestroy()
-    {
-        _beanController?.OnBeanDestroyed();
-    }
 
 }
