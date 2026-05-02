@@ -49,7 +49,7 @@ public class BurnerLoadCalculator : MonoBehaviour
 
         if (includeBeanMassInWeight && _bagController != null)
         {
-            var beans = _bagController.BeanRegistry.ActiveBeanBodies;
+            var beans = _bagController.ActiveBeanBodies;
             float maxDistSqr = _bagController.turkaRadius * _bagController.turkaRadius;
             Vector3 center = _bagController.spawnPoint != null ? _bagController.spawnPoint.position : (_turka != null ? _turka.position : _burnerRoot.position);
 
