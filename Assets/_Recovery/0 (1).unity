@@ -1887,6 +1887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f035d19a19b5bba1b11cd162e74df4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
+  pullForce: 15
+  pullRadius: 0.3
 --- !u!65 &1784829407
 BoxCollider:
   m_ObjectHideFlags: 0
