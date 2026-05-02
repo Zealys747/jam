@@ -11,7 +11,11 @@ public class VaseLift : MonoBehaviour
 
     [Header("Задержка партиклов")]
     public float particleDelay = 0.4f;
-
+    
+    
+    public TemperatureController temperatureController; // чтобы удобно выводить и контролить темпу + с воды ыххы
+    
+    
     private bool _isLifted = false;
     private Mouse _mouse;
     private float _liftTimer = 0f;

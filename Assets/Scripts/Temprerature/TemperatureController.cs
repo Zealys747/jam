@@ -49,6 +49,8 @@ public class TemperatureController : MonoBehaviour
         UpdateNeedle();
 
         FireInput = _temp;
+        
+        Debug.Log(waterCooling);
     }
 
     private void HandleScroll()
@@ -67,8 +69,13 @@ public class TemperatureController : MonoBehaviour
 
     private void ApplyCooling()
     {
-        float cooling = coolSpeed + waterCooling * waterCoolSpeed;
-        _tempVelocity -= cooling * Time.deltaTime;
+        _tempVelocity -= coolSpeed * Time.deltaTime;
+        
+        if (waterCooling >0f)
+        {
+            _temp -=waterCooling *  Time.deltaTime * waterCoolSpeed;
+            _temp = Mathf.Clamp01(_temp);
+        }
     }
 
     private void UpdateTemperaturePhysics()
