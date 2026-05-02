@@ -1169,27 +1169,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: efa321d76bfd9293da3c829453076500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1178182818}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: efa321d76bfd9293da3c829453076500, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1178182817}
   m_SourcePrefab: {fileID: 100100000, guid: efa321d76bfd9293da3c829453076500, type: 3}
 --- !u!1 &1178182816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: efa321d76bfd9293da3c829453076500, type: 3}
   m_PrefabInstance: {fileID: 1178182815}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1178182817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178182816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41d79cc9e90a6bd2b99f32d4c92e558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BeanLifetime
 --- !u!64 &1178182818
 MeshCollider:
   m_ObjectHideFlags: 0

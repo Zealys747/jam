@@ -10,6 +10,7 @@ public class BeanLifetime : MonoBehaviour
     private const float CheckDelay = 1.2f;
     private float _alive;
     private bool _isInitialized;
+    private bool _runtimeInitialized;
     private bool _destroyReported;
 
     public bool IsInitialized => _isInitialized;
@@ -23,12 +24,13 @@ public class BeanLifetime : MonoBehaviour
         _body = body;
         _alive = 0f;
         _destroyReported = false;
+        _runtimeInitialized = true;
         _isInitialized = _beanController != null && _turkaTransform != null;
     }
 
     private void Update()
     {
-        if (!_isInitialized)
+        if (!_runtimeInitialized || !_isInitialized)
             return;
 
         _alive += Time.deltaTime;
@@ -49,7 +51,7 @@ public class BeanLifetime : MonoBehaviour
 
     private void NotifyDestroyed()
     {
-        if (!_isInitialized || _destroyReported || _beanController == null)
+        if (!_runtimeInitialized || !_isInitialized || _destroyReported || _beanController == null)
             return;
 
         _destroyReported = true;

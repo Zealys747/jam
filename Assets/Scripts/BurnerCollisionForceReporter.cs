@@ -1,37 +1,22 @@
 using UnityEngine;
 
-[DisallowMultipleComponent]
 [RequireComponent(typeof(Collider))]
 public class BurnerCollisionForceReporter : MonoBehaviour
 {
-    [SerializeField] private float minImpulse = 0.05f;
-    [SerializeField] private float stayImpulseMultiplier = 0.15f;
+    private BurnerTiltController _ctrl;
+    private Collider _col;
 
-    private BurnerTiltController _target;
+    public void Bind(BurnerTiltController controller) => _ctrl = controller;
 
-    public void Bind(BurnerTiltController target)
+    private void Awake() => _col = GetComponent<Collider>();
+
+    private void OnCollisionEnter(Collision collision) => Report(collision);
+    private void OnCollisionStay(Collision collision) => Report(collision);
+
+    private void Report(Collision collision)
     {
-        _target = target;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Report(collision.impulse);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        Report(collision.impulse * stayImpulseMultiplier);
-    }
-
-    private void Report(Vector3 impulse)
-    {
-        if (_target == null)
-            return;
-
-        if (impulse.sqrMagnitude < minImpulse * minImpulse)
-            return;
-
-        _target.RegisterCollisionImpulse(impulse);
+        if (_ctrl == null || _col == null || _col.isTrigger) return;
+        float mass = collision.rigidbody != null ? collision.rigidbody.mass : 1f;
+        _ctrl.RegisterCollisionImpulse(mass * collision.relativeVelocity);
     }
 }
