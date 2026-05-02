@@ -15,7 +15,7 @@ public class BurnerLoadCalculator : MonoBehaviour
     private const float MinMass = 0.0001f;
     private Transform _burnerRoot, _turka, _space;
     private Rigidbody _turkaBody;
-    private BeanController _beanCtrl;
+    private BagController _bagController;
     private Vector2 _baseLoadOffset;
 
     public void Init(Transform burnerRoot, Transform turka, bool calibrate, Transform space)
@@ -24,7 +24,7 @@ public class BurnerLoadCalculator : MonoBehaviour
         _turka = turka;
         _space = space != null ? space : burnerRoot;
         if (turka != null) _turkaBody = turka.GetComponent<Rigidbody>();
-        _beanCtrl = FindAnyObjectByType<BeanController>();
+        _bagController = FindAnyObjectByType<BagController>();
         if (calibrate) _baseLoadOffset = ComputeLoadOffset(out _);
     }
 
@@ -47,16 +47,16 @@ public class BurnerLoadCalculator : MonoBehaviour
         if (includeTurkaMassInWeight && _turka != null)
             AddMass(_turka.position, GetTurkaMass(), ref weighted, ref totalMass);
 
-        if (includeBeanMassInWeight && _beanCtrl != null)
+        if (includeBeanMassInWeight && _bagController != null)
         {
-            var beans = _beanCtrl.ActiveBeanBodies;
-            float maxDistSqr = _beanCtrl.zoneRadius * _beanCtrl.zoneRadius;
-            Vector3 center = _beanCtrl.spawnPoint != null ? _beanCtrl.spawnPoint.position : (_turka != null ? _turka.position : _burnerRoot.position);
+            var beans = _bagController.ActiveBeanBodies;
+            float maxDistSqr = _bagController.turkaRadius * _bagController.turkaRadius;
+            Vector3 center = _bagController.spawnPoint != null ? _bagController.spawnPoint.position : (_turka != null ? _turka.position : _burnerRoot.position);
 
             foreach (var b in beans)
             {
                 if (b == null || !b.gameObject.activeInHierarchy) continue;
-                if (_beanCtrl.zoneRadius > 0f)
+                if (_bagController.turkaRadius > 0f)
                 {
                     Vector2 p = new Vector2(b.worldCenterOfMass.x - center.x, b.worldCenterOfMass.z - center.z);
                     if (p.sqrMagnitude > maxDistSqr) continue;
