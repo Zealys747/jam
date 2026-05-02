@@ -43,9 +43,6 @@ public class BagController : MonoBehaviour
     
     
     private List<(GameObject obj, float spawnTime)> _beans = new();
-    private readonly List<Rigidbody> _activeBeanBodies = new();
-
-    public IReadOnlyList<Rigidbody> ActiveBeanBodies => _activeBeanBodies;
 
     void Start()
     {
@@ -136,7 +133,6 @@ public class BagController : MonoBehaviour
         rb.mass = beanMass;
         rb.angularDamping = 1f;
 
-        _activeBeanBodies.Add(rb);
         _beans.Add((bean, Time.time));
    
     }
@@ -152,7 +148,6 @@ public class BagController : MonoBehaviour
             if (obj == null)
             {
                 _beans.RemoveAt(i);
-                _activeBeanBodies.RemoveAll(body => body == null);
                 continue;
             }
 
@@ -176,24 +171,11 @@ public class BagController : MonoBehaviour
                     {
                         Debug.Log("not in turka");
                     }
-                    RemoveBeanBody(obj);
                     Destroy(obj);
                     _beans.RemoveAt(i);
                 }
             }
         }
-    }
-
-    private void RemoveBeanBody(GameObject obj)
-    {
-        if (obj != null)
-        {
-            Rigidbody body = obj.GetComponent<Rigidbody>();
-            if (body != null)
-                _activeBeanBodies.Remove(body);
-        }
-
-        _activeBeanBodies.RemoveAll(body => body == null);
     }
 
     public void Clear()
@@ -203,6 +185,5 @@ public class BagController : MonoBehaviour
             if (obj != null) Destroy(obj);
         }
         _beans.Clear();
-        _activeBeanBodies.Clear();
     }
 }
