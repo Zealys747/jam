@@ -240,6 +240,7 @@ MonoBehaviour:
   rotateSpeed: 5
   waterParticles: {fileID: 1146256834}
   particleDelay: 0.8
+  temperatureController: {fileID: 0}
 --- !u!136 &287945170
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -627,6 +628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: turko-liquid
       objectReference: {fileID: 0}
+    - target: {fileID: 7688818784460272397, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8251345140348527698, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
@@ -689,10 +694,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8251345140348527698, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1784829405}
+    - targetCorrespondingSourceObject: {fileID: 8251345140348527698, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084365339}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 975127957558934542, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1925656623}
+    - targetCorrespondingSourceObject: {fileID: 975127957558934542, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1925656627}
   m_SourcePrefab: {fileID: 100100000, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
 --- !u!1 &561784799
 GameObject:
@@ -844,37 +855,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
   m_PrefabInstance: {fileID: 7981056770914970182}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &738759501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 738759503}
-  m_Layer: 0
-  m_Name: BeanController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &738759503
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738759501}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751720507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1064,7 @@ MonoBehaviour:
   scrollSensitivity: 50
   friction: 3.5
   maxSpeed: 1.2
-  coolSpeed: 0.009
+  coolSpeed: 0.12
   waterCooling: 0
   waterCoolSpeed: 0.5
   sliderTrack: {fileID: 1226554319}
@@ -1249,6 +1229,75 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1537944195142905910, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
   m_PrefabInstance: {fileID: 7981056770914970182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1084365338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084365339}
+  - component: {fileID: 1084365341}
+  - component: {fileID: 1084365340}
+  m_Layer: 0
+  m_Name: CheckEntering
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084365339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084365338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1925656622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084365340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084365338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7467047edab2e9e4b9df75d5d076a696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
+  temperatureController: {fileID: 894733170}
+  coolingPerParticle: 1.5
+  maxCooling: 20
+--- !u!65 &1084365341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084365338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02013809, y: 0.020245051, z: 0.0012957782}
+  m_Center: {x: 0.00041036904, y: -0.00010455847, z: 0.014686395}
 --- !u!1 &1146256834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4666344524769065257, guid: a630a6712a5783a48957cd443c46f2df, type: 3}
@@ -1489,6 +1538,10 @@ PrefabInstance:
     - target: {fileID: 4514146179943986500, guid: a630a6712a5783a48957cd443c46f2df, type: 3}
       propertyPath: CollisionModule.radiusScale
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514146179943986500, guid: a630a6712a5783a48957cd443c46f2df, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4514146179943986500, guid: a630a6712a5783a48957cd443c46f2df, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -1887,6 +1940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f035d19a19b5bba1b11cd162e74df4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
+  pullForce: 1
+  pullRadius: 0.2
 --- !u!65 &1784829407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2049,7 +2104,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41d79cc9e90a6bd2b99f32d4c92e558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeanLifetime
-  _bagController: {fileID: 2012410113}
+  _turkaRadius: 1
+  _turkaTransform: {fileID: 1925656622}
+  _checkDelay: 1.2
+  _alive: 0
+  _landed: 0
+--- !u!114 &1925656627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925656618}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7467047edab2e9e4b9df75d5d076a696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
+  temperatureController: {fileID: 894733170}
+  coolingPerParticle: 0.1
+  maxCooling: 2
 --- !u!1 &2005379945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,11 +2186,12 @@ MonoBehaviour:
   - {fileID: 3331173128291682303, guid: 6bf74a57a0aa691468dd00688ba170f6, type: 3}
   spawnPoint: {fileID: 853718961}
   spawnRadius: 0.05
-  maxBeans: 50
   spawnRate: 6
   beanMass: 0.1
   beanMaterial: {fileID: 13400000, guid: 62d1165a2cb20f9e6a556cf30dcc899c, type: 2}
-  turkaTransform: {fileID: 0}
+  beanCheckDelay: 1.2
+  beanMaxLifetime: 5
+  turkaTransform: {fileID: 1925656622}
   turkaRadius: 0.5
 --- !u!1 &2023159018
 GameObject:
@@ -2554,4 +2629,3 @@ SceneRoots:
   - {fileID: 56254786}
   - {fileID: 1476771490}
   - {fileID: 894733171}
-  - {fileID: 738759503}
