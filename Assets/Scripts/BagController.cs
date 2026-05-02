@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class BagController : MonoBehaviour
 {
@@ -26,16 +27,22 @@ public class BagController : MonoBehaviour
     [Header("физика")]
     public float beanMass = 0.1f;
     public PhysicsMaterial beanMaterial;
-
-    [Header("зона турки")]
+    
+    public float beanCheckDelay = 1.2f;
+    public float beanMaxLifetime = 5f;
+    
     public Transform turkaTransform;
     public float turkaRadius = 0.5f;
-
+    
+    
     private bool _isLifted = false;
     private float _liftTimer = 0f;
     private bool _spawning = false;
     private float _spawnTimer = 0f;
     private Mouse _mouse;
+    
+    
+    private List<(GameObject obj, float spawnTime)> _beans = new();
 
     void Start()
     {
@@ -96,6 +103,8 @@ public class BagController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, target.position, moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rotateSpeed * Time.deltaTime);
         }
+        
+        CheckBeans();
     }
 
     private void SpawnBean()
@@ -124,19 +133,57 @@ public class BagController : MonoBehaviour
         rb.mass = beanMass;
         rb.angularDamping = 1f;
 
-        // BeanLifetime следит за зоной турки
-        BeanLifetime lifetime = bean.AddComponent<BeanLifetime>();
-        lifetime.Init(turkaRadius, turkaTransform);
-
+        _beans.Add((bean, Time.time));
    
     }
 
+    private void CheckBeans()
+    {
+        float now = Time.time;
 
+        for (int i = _beans.Count - 1; i >= 0; i--)
+        {
+            var (obj, spawnTime) = _beans[i];
+
+            if (obj == null)
+            {
+                _beans.RemoveAt(i);
+                continue;
+            }
+
+            float age = now - spawnTime;
+
+            bool expired = age >= beanMaxLifetime;
+            
+            bool shouldCheck = age >= beanCheckDelay;
+
+            if (expired || shouldCheck)
+            {
+                if (shouldCheck && turkaTransform != null)
+                {
+                    bool inTurka = Vector3.Distance(turkaTransform.position, obj.transform.position) <= turkaRadius;
+
+                    if (inTurka)
+                    {
+                        Debug.Log("in turka");
+                    }
+                    else
+                    {
+                        Debug.Log("not in turka");
+                    }
+                    Destroy(obj);
+                    _beans.RemoveAt(i);
+                }
+            }
+        }
+    }
 
     public void Clear()
     {
-        foreach (var bean in FindObjectsByType<BeanLifetime>(FindObjectsSortMode.None))
-            Destroy(bean.gameObject);
-   
+        foreach (var (obj, _) in _beans)
+        {
+            if (obj != null) Destroy(obj);
+        }
+        _beans.Clear();
     }
 }
