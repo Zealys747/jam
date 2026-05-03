@@ -33,9 +33,13 @@ public class BagController : MonoBehaviour
     
     public Transform turkaTransform;
     public float turkaRadius = 0.5f;
-    
-    
-    private bool _isLifted = false;
+
+    [Header("Для передачи бобов (Ванечка)")]
+    public bool _isLifted = false; // потом поменять
+    [Range(0f, 1f)]
+    public float beanFillSpeed;
+    public Turka turka;
+
     private float _liftTimer = 0f;
     private bool _spawning = false;
     private float _spawnTimer = 0f;
@@ -105,8 +109,23 @@ public class BagController : MonoBehaviour
         }
         
         CheckBeans();
+
+        if (_isLifted)
+        {
+            FillTurka();
+        }
     }
 
+    private void FillTurka()
+    {
+        turka.currentCoffeeState.beanPerCent += beanFillSpeed / 10 * Time.deltaTime;
+
+        if (turka.currentCoffeeState.beanPerCent > 1)
+        {
+            turka.currentCoffeeState.beanPerCent = 1;
+            return;
+        }
+    }
     private void SpawnBean()
     {
         if (beanPrefabs == null || beanPrefabs.Length == 0) return;
@@ -165,11 +184,11 @@ public class BagController : MonoBehaviour
 
                     if (inTurka)
                     {
-                        Debug.Log("in turka");
+                        //Debug.Log("in turka");
                     }
                     else
                     {
-                        Debug.Log("not in turka");
+                       // Debug.Log("not in turka");
                     }
                     Destroy(obj);
                     _beans.RemoveAt(i);

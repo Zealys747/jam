@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turka : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class Turka : MonoBehaviour
     public float maxCompletionSpeed; // max скорость
     public float maxErrorCoef; // максимально возможная ошибка
 
+    [Header("UI")]
+    public Text beans;
+    public Text water;
+    public Text temp;
+
+
     void Start()
     {
         currentCoffeeState = new CoffeeState();
@@ -23,10 +30,16 @@ public class Turka : MonoBehaviour
 
     private void Update()
     {
-        currentCoffeeState.Info();
+        //currentCoffeeState.Info();
         //CheckCook()
+        UpdateUI();
     }
-    
+    private void UpdateUI()
+    {
+        beans.text = $"Бобы: \n{(int)(currentCoffeeState.beanPerCent * 100)}%";
+        water.text = $"Вода: \n{(int)(currentCoffeeState.filledWaterPerCent * 100)}%";
+        temp.text = $"Тепло: \n{(int)currentCoffeeState.temperature}°C";
+    }
     public void FillTurka()
     {
         /*if (filledWaterPerCent > 1)

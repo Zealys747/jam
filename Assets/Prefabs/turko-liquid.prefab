@@ -141,7 +141,7 @@ Transform:
   m_Children:
   - {fileID: 3868908771008986919}
   - {fileID: 9031121103842584428}
-  - {fileID: 2607722242273305477}
+  - {fileID: 3720235915158769640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5085700043642468270
@@ -245,7 +245,7 @@ MonoBehaviour:
   minCompletionSpeed: 5
   maxCompletionSpeed: 15
   maxErrorCoef: 20
---- !u!1 &5693505101606109196
+--- !u!1 &6007085022910107409
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,38 +253,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2607722242273305477}
-  - component: {fileID: 8639995231209674802}
-  - component: {fileID: 9090905581537734654}
-  m_Layer: 0
-  m_Name: BlackHole
+  - component: {fileID: 3720235915158769640}
+  - component: {fileID: 1438288659331763778}
+  - component: {fileID: 8868624885106434269}
+  m_Layer: 7
+  m_Name: CheckEntering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2607722242273305477
+--- !u!4 &3720235915158769640
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693505101606109196}
+  m_GameObject: {fileID: 6007085022910107409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0152}
-  m_LocalScale: {x: 0.023983784, y: 0.020312652, z: 0.0049663223}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8251345140348527698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8639995231209674802
+--- !u!65 &1438288659331763778
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693505101606109196}
+  m_GameObject: {fileID: 6007085022910107409}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -293,26 +293,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9090905581537734654
+  m_Size: {x: 0.02013809, y: 0.020245051, z: 0.0012957782}
+  m_Center: {x: 0.00041036904, y: -0.00010455847, z: 0.014686395}
+--- !u!114 &8868624885106434269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693505101606109196}
+  m_GameObject: {fileID: 6007085022910107409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f035d19a19b5bba1b11cd162e74df4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7467047edab2e9e4b9df75d5d076a696, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BlackHole
-  pullForce: 15
-  pullRadius: 1
+  m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
+  temperatureController: {fileID: 0}
+  coolingPerParticle: 1.5
+  maxCooling: 20
 --- !u!1 &6912483357688953983
 GameObject:
   m_ObjectHideFlags: 0

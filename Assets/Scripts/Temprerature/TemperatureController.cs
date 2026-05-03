@@ -55,7 +55,7 @@ public class TemperatureController : MonoBehaviour
 
         FireInput = _temp;
         
-        Debug.Log(waterCooling);
+        //Debug.Log(waterCooling);
     }
 
     private void UpdateTurkaTemp()
