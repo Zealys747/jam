@@ -1,3 +1,4 @@
+using System.Collections;
 using CartoonFX;
 using UnityEngine;
 
@@ -28,6 +29,14 @@ public class ExplosionTurka : MonoBehaviour
             ).normalized;  // Ќормализуем, чтобы сила была одинаковой по модулю
 
             rb.AddForce(randomDirection * force, ForceMode.Impulse);
+
+            StartCoroutine(EndGame(2f));
         }
+    }
+
+    private IEnumerator EndGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        LevelManager.Instance.LoadScene(0);
     }
 }
