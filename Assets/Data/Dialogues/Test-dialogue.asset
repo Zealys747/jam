@@ -16,21 +16,21 @@ MonoBehaviour:
   - CharacterName: test
     CharacterLine: test test test test test testtest test testtest test testtest
       test testtest test testtest test testtest test test
-    sprite: {fileID: 21300000, guid: 22031ff658cf15c43aa7bc3140b3e41e, type: 3}
+    sprite: {fileID: 21300000, guid: 7e44ec65f0d8c3647af684c36b9df7cb, type: 3}
     delayBefore: 0.5
     typewriterSpeed: 30
     autoAdvanceDelay: 2
   - CharacterName: test
     CharacterLine: test test testtest test testtest test testtest test testtest test
       testtest test test
-    sprite: {fileID: 21300000, guid: 22031ff658cf15c43aa7bc3140b3e41e, type: 3}
+    sprite: {fileID: 21300000, guid: 7e44ec65f0d8c3647af684c36b9df7cb, type: 3}
     delayBefore: 0.5
     typewriterSpeed: 30
     autoAdvanceDelay: 2
   - CharacterName: test
     CharacterLine: test test testtest test testtest test testtest test testtest test
       testtest test test
-    sprite: {fileID: 21300000, guid: 22031ff658cf15c43aa7bc3140b3e41e, type: 3}
+    sprite: {fileID: 21300000, guid: 7e44ec65f0d8c3647af684c36b9df7cb, type: 3}
     delayBefore: 0.5
     typewriterSpeed: 30
     autoAdvanceDelay: 2
