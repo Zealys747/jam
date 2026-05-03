@@ -164,7 +164,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotateSpeed: 5
   waterParticles: {fileID: 103932495330017527}
-  particleDelay: 0.8
+  particleDelay: 0.3
   waterCoolingReciever: {fileID: 0}
   temperatureController: {fileID: 0}
 --- !u!1 &1984864915826780957

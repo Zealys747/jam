@@ -80,7 +80,7 @@ public class BurnerTiltController : MonoBehaviour
 
         _currentTilt += input * _playerTiltStrength * Time.deltaTime;
 
-        Debug.Log(_TurkiOffsetProgress);
+        //Debug.Log(_TurkiOffsetProgress);
     }
 
     void ProcessTilt()
@@ -163,6 +163,6 @@ public class BurnerTiltController : MonoBehaviour
     {
         _currentTargetTilt = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         _currentTiltTimer = Random.Range(_tiltMaxTimer.x, _tiltMaxTimer.y);
-        Debug.Log($"Assigned Tilt: {_currentTargetTilt}");
+        //Debug.Log($"Assigned Tilt: {_currentTargetTilt}");
     }
 }

@@ -3,7 +3,11 @@ using UnityEngine.UI;
 
 public class Turka : MonoBehaviour
 {
-    [SerializeField] private Material material; // его менять буду, потомушо шейдер там для заполнения
+    public GameObject waterMaterial;
+    private Material material;
+
+    private MaterialPropertyBlock propertyBlock;
+    private Renderer targetRenderer;
 
     [Header("Текущие свойства в турке")]
     public float completion; // когда всё в норме - сюда считается процент, всего - 100
@@ -25,14 +29,26 @@ public class Turka : MonoBehaviour
 
     void Start()
     {
+        Renderer renderer = waterMaterial.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            material = renderer.material;
+        }
+        else
+        {
+            Debug.LogError("На объекте waterMaterial нет Renderer компонента!");
+        }
+
         currentCoffeeState = new CoffeeState();
+
     }
 
     private void Update()
     {
-        //currentCoffeeState.Info();
+        currentCoffeeState.Info();
         //CheckCook()
         UpdateUI();
+        UpdateWater();
     }
     private void UpdateUI()
     {
@@ -40,12 +56,16 @@ public class Turka : MonoBehaviour
         water.text = $"Вода: \n{(int)(currentCoffeeState.filledWaterPerCent * 100)}%";
         temp.text = $"Тепло: \n{(int)currentCoffeeState.temperature}°C";
     }
-    public void FillTurka()
+    public void UpdateWater()
     {
-        /*if (filledWaterPerCent > 1)
+        /*// Вариант 1: Через MaterialPropertyBlock для Renderer
+        if (targetRenderer != null)
         {
-            filledWaterPerCent = 1;
+            propertyBlock.SetFloat("_Fill", currentCoffeeState.filledWaterPerCent);
+            targetRenderer.SetPropertyBlock(propertyBlock);
         }*/
+
+        material.SetFloat("_Fill", currentCoffeeState.filledWaterPerCent);
     }
 
     public void PourOut()

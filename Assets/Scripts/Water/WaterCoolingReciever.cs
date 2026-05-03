@@ -10,15 +10,32 @@ public class WaterCoolingReciever : MonoBehaviour
     public float coolingWhilePouring = 1f;
     private bool _isPouring = false;
 
+    private Turka turka;
+
+    private void Start()
+    {
+        turka = GetComponentInParent<Turka>();
+    }
+
     private void Update()
     {
-        
+        FillTurka();
+
+        if (temperatureController != null)
+            temperatureController.waterCooling = _isPouring ? coolingWhilePouring : 0f;
+    }
+
+    private void FillTurka()
+    {
         if (_isPouring)
             waterLevel = Mathf.Clamp01(waterLevel + fillRate * Time.deltaTime);
 
-        
-        if (temperatureController != null)
-            temperatureController.waterCooling = _isPouring ? coolingWhilePouring : 0f;
+        if ((waterLevel + turka.currentCoffeeState.beanPerCent) > 1)
+        {
+            waterLevel = 1 - turka.currentCoffeeState.beanPerCent;
+        }
+
+        turka.currentCoffeeState.filledWaterPerCent = waterLevel;
     }
 
     public void StartPouring() =>  _isPouring = true;
