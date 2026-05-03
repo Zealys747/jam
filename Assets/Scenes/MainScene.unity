@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogueData: {fileID: 11400000, guid: d69fc3883c8ec114aabf33c48fcd88b0, type: 2}
-  triggerOnlyOnce: 1
+  triggerOnlyOnce: 0
   playerTag: Player
 --- !u!65 &90807743
 BoxCollider:
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogueData: {fileID: 11400000, guid: 4cf59f53f7cbd35458df9d8e9722f322, type: 2}
-  triggerOnlyOnce: 1
+  triggerOnlyOnce: 0
   playerTag: Player
 --- !u!65 &1187579651
 BoxCollider:
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogueData: {fileID: 11400000, guid: 5701f94c485d963489a154d86a887e13, type: 2}
-  triggerOnlyOnce: 1
+  triggerOnlyOnce: 0
   playerTag: Player
 --- !u!65 &1441252896
 BoxCollider:
@@ -1543,7 +1543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b9895724207b547b22fe8607381126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogueData: {fileID: 0}
+  dialogueData: {fileID: 11400000, guid: 5e214dea1eda9634da5ef28b411d4388, type: 2}
   triggerOnlyOnce: 0
   playerTag: Player
 --- !u!65 &1847237807
