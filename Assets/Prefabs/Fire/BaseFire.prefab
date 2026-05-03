@@ -293,7 +293,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 1
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3626,7 +3626,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3695,7 +3695,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4866,13 +4866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireController
   temperatureController: {fileID: 0}
-  scrollSensitivity: 1.5
-  decaySpeed: 1
   minScale: 0.15
   maxScale: 1.5
   minEmissionMultiplier: 0.05
   maxEmissionMultiplier: 1
-  displayEpsilon: 0.02
 --- !u!1 &3214904735253628245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,7 +4898,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.049, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 0.22466196, y: 0.22466208, z: 0.22466208}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7340186794918316815}
@@ -8494,7 +8491,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8510,7 +8507,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -8563,7 +8560,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8616,7 +8613,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9749,7 +9746,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.81438, y: 0.81438, z: 0.76683646}
+  m_LocalScale: {x: 0.33862948, y: 0.1279267, z: 0.13556826}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7340186794918316815}
@@ -14597,7 +14594,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 0.53154, y: 0.5315402, z: 0.5315402}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7340186794918316815}
@@ -19480,8 +19477,8 @@ Transform:
   m_GameObject: {fileID: 7859447723638723951}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.7442806, y: 0.7442806, z: 0.7442806}
+  m_LocalPosition: {x: 0, y: -0.039, z: 0}
+  m_LocalScale: {x: 0.3249882, y: 0.3249882, z: 0.3249882}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7340186794918316815}

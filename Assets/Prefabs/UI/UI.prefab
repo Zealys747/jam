@@ -514,7 +514,6 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -568,10 +567,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9009809499604620230}
     m_Modifications:
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8250321
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.56508595
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50.77008
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 177.35027
+      objectReference: {fileID: 0}
+    - target: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 68.817
+      objectReference: {fileID: 0}
     - target: {fileID: 1494041373377483673, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
       propertyPath: m_Name
       value: SliderRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 6378560321960980853, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92529569d72fea14e87d8dba2838f5b2, type: 3}
     - target: {fileID: 7394880474041351379, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

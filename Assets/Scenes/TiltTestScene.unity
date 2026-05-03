@@ -240,6 +240,7 @@ MonoBehaviour:
   rotateSpeed: 5
   waterParticles: {fileID: 1146256834}
   particleDelay: 0.8
+  waterCoolingReciever: {fileID: 0}
   temperatureController: {fileID: 0}
 --- !u!136 &287945170
 CapsuleCollider:
@@ -858,42 +859,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 740280262119470939, guid: e51dfd3db41cff942b99b5d1b1e78a37, type: 3}
   m_PrefabInstance: {fileID: 7981056770914970182}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &748783681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2595883591140632426, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
-  m_PrefabInstance: {fileID: 1500094229}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &748783682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748783681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7976dc899cb7f1c47ab5716388de95b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _playerTiltStrength: 16
-  _randomTiltStrength: 2
-  _burnerRoot: {fileID: 748783684}
-  _turkiRoot: {fileID: 1925656622}
-  _invertRightAxisTilt: 0
-  _invertForwardAxisTilt: 1
-  _tiltMaxTimer: {x: 5, y: 7}
-  _maxTurkiTilt: 10
-  _turkiTiltStrength: 0.04
-  _invertRightAxisTurkaTilt: 1
-  _invertForwardAxisTurkaTilt: 1
-  visualTurkiRotationTilt: 60
-  _maxTurkiOffset: 0.2
-  _TurkiRigidbody: {fileID: 1925656631}
---- !u!4 &748783684 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2003217763072690653, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
-  m_PrefabInstance: {fileID: 1500094229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &751720507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1074,9 @@ MonoBehaviour:
   sliderTrack: {fileID: 1226554319}
   needle: {fileID: 630585272}
   zoneRect: {fileID: 1067140293}
+  turka: {fileID: 0}
   FireInput: 0
+  _temp: 0
 --- !u!4 &894733171
 Transform:
   m_ObjectHideFlags: 0
@@ -1314,8 +1281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
   temperatureController: {fileID: 894733170}
-  coolingPerParticle: 1.5
-  maxCooling: 20
+  waterLevel: 0
+  fillRate: 0.2
+  coolingWhilePouring: 1
 --- !u!65 &1084365341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1898,14 +1866,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Burner
       objectReference: {fileID: 0}
+    - target: {fileID: 8790802657724286663, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
+      propertyPath: _turkiRoot
+      value: 
+      objectReference: {fileID: 1925656622}
+    - target: {fileID: 8790802657724286663, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
+      propertyPath: _TurkiRigidbody
+      value: 
+      objectReference: {fileID: 1925656631}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 645192011716505789, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2595883591140632426, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 748783682}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0d126911b5b7048a80fae07c1d9e5a, type: 3}
 --- !u!1 &1590114272
 GameObject:
@@ -2160,8 +2132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
   temperatureController: {fileID: 894733170}
-  coolingPerParticle: 0.1
-  maxCooling: 2
+  waterLevel: 0
+  fillRate: 0.2
+  coolingWhilePouring: 1
 --- !u!54 &1925656631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2258,6 +2231,9 @@ MonoBehaviour:
   beanMaxLifetime: 5
   turkaTransform: {fileID: 1925656622}
   turkaRadius: 0.5
+  _isLifted: 0
+  beanFillSpeed: 0
+  turka: {fileID: 0}
 --- !u!1 &2023159018
 GameObject:
   m_ObjectHideFlags: 0
