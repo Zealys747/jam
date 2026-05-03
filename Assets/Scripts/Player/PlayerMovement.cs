@@ -11,11 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float groundDrag;
     [Header("Player Jump")]
-    [SerializeField] private float jumpForce;
+    // [SerializeField] private float jumpForce;
     [SerializeField, Range(0, 100)] private float gravity;
     // Jump cooldown in seconds
-    [SerializeField, Range(0.0f, 1.0f)] private float jumpCooldown;
+    // [SerializeField, Range(0.0f, 1.0f)] private float jumpCooldown;
     [SerializeField] private float airMultiplier;
+
+    private float _savedWalkSpeed;
+    private float _savedSprintSpeed;
 
 
 
@@ -39,10 +42,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     private float moveSpeed;
     bool grounded;
-    bool readyToJump;
-    bool exitingSLope;
+    // bool readyToJump;
+    // bool exitingSLope;
 
-    // Для силы приземления от Юпитера
+    // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public float fallForce;
 
 
@@ -65,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        readyToJump = true;
+        // readyToJump = true;
     }
 
     private void Update()
@@ -114,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (OnSlope() && !exitingSLope)
+        if (OnSlope() )
         {
             rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
 
@@ -151,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (OnSlope() && !exitingSLope)
+        if (OnSlope())
         {
             if(rb.linearVelocity.magnitude > moveSpeed)
             {
@@ -170,29 +173,29 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void ResetJump()
-    {
-        readyToJump = true;
-        exitingSLope = false;
-    }
+    // private void ResetJump()
+    // {
+    //     readyToJump = true;
+    //     exitingSLope = false;
+    // }
 
-    public void OnJump()
-    {
-        if(readyToJump && grounded)
-        {
-            exitingSLope = true;
-
-            readyToJump = false;
-            // grounded = false;
-
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-
-            // rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-    }
+    // public void OnJump()
+    // {
+    //     if(readyToJump && grounded)
+    //     {
+    //         exitingSLope = true;
+    //
+    //         readyToJump = false;
+    //         // grounded = false;
+    //
+    //         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+    //         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    //
+    //         // rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+    //
+    //         Invoke(nameof(ResetJump), jumpCooldown);
+    //     }
+    // }
 
     public void ApplyGravity()
     {
@@ -232,4 +235,20 @@ public class PlayerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+    public void CharacterStop()
+    {
+        _savedWalkSpeed = walkSpeed;
+        _savedSprintSpeed = sprintSpeed;
+
+        walkSpeed = 0f;
+        sprintSpeed = 0f;
+    }
+
+    public void CharacterWalk()
+    {
+        walkSpeed = _savedWalkSpeed;
+        sprintSpeed = _savedSprintSpeed;
+    }
+    
 }
