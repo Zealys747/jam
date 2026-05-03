@@ -240,7 +240,8 @@ MonoBehaviour:
   rotateSpeed: 5
   waterParticles: {fileID: 1146256834}
   particleDelay: 0.8
-  temperatureController: {fileID: 0}
+  waterCoolingReciever: {fileID: 1084365340}
+  temperatureController: {fileID: 894733170}
 --- !u!136 &287945170
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -689,7 +690,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5693505101606109196, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
+    - {fileID: 6912483357688953983, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8251345140348527698, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
       insertIndex: -1
@@ -1067,7 +1070,9 @@ MonoBehaviour:
   sliderTrack: {fileID: 1226554319}
   needle: {fileID: 630585272}
   zoneRect: {fileID: 1067140293}
+  turka: {fileID: 1925656624}
   FireInput: 0
+  _temp: 0
 --- !u!4 &894733171
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,8 +1277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
   temperatureController: {fileID: 894733170}
-  coolingPerParticle: 1.5
-  maxCooling: 20
+  waterLevel: 0
+  fillRate: 0.2
+  coolingWhilePouring: 1
 --- !u!65 &1084365341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2101,6 +2107,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41d79cc9e90a6bd2b99f32d4c92e558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeanLifetime
+--- !u!114 &1925656624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2304136941847142571, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
+  m_PrefabInstance: {fileID: 478003543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925656618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b333fe0325e8844ae64c7ddacb1129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Turka
 --- !u!1 &2005379945
 GameObject:
   m_ObjectHideFlags: 0

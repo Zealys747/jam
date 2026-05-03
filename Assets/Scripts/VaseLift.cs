@@ -12,6 +12,7 @@ public class VaseLift : MonoBehaviour
     [Header("Задержка партиклов")]
     public float particleDelay = 0.4f;
     
+    public WaterCoolingReciever waterCoolingReciever;
     
     public TemperatureController temperatureController; // чтобы удобно выводить и контролить темпу + с воды ыххы
     
@@ -52,9 +53,11 @@ public class VaseLift : MonoBehaviour
 
             if (waterParticles != null && _particlesActive)
             {
+                
                 waterParticles.SetActive(false);
                 _particlesActive = false;
             }
+            waterCoolingReciever?.StopPouring();
         }
 
         if (_isLifted && !_particlesActive)
@@ -66,6 +69,8 @@ public class VaseLift : MonoBehaviour
                 if (waterParticles != null)
                     waterParticles.SetActive(true);
                 _particlesActive = true;
+                
+                waterCoolingReciever?.StartPouring();
             }
         }
 
