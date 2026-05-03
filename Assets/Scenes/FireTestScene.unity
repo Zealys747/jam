@@ -701,9 +701,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 975127957558934542, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1925656623}
-    - targetCorrespondingSourceObject: {fileID: 975127957558934542, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1925656627}
   m_SourcePrefab: {fileID: 100100000, guid: d2ce43b1c0b08c548b0fd1275d1f8185, type: 3}
 --- !u!1 &561784799
 GameObject:
@@ -1240,7 +1237,7 @@ GameObject:
   - component: {fileID: 1084365339}
   - component: {fileID: 1084365341}
   - component: {fileID: 1084365340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CheckEntering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,26 +2101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41d79cc9e90a6bd2b99f32d4c92e558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeanLifetime
-  _turkaRadius: 1
-  _turkaTransform: {fileID: 1925656622}
-  _checkDelay: 1.2
-  _alive: 0
-  _landed: 0
---- !u!114 &1925656627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925656618}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7467047edab2e9e4b9df75d5d076a696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaterCoolingReciever
-  temperatureController: {fileID: 894733170}
-  coolingPerParticle: 0.1
-  maxCooling: 2
 --- !u!1 &2005379945
 GameObject:
   m_ObjectHideFlags: 0

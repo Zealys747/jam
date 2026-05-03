@@ -28,12 +28,16 @@ public class TemperatureController : MonoBehaviour
     public RectTransform needle;
     public RectTransform zoneRect;
 
+    [Header("где турка")]
+    public Turka turka;
+
+
     public float Temperature => _temp;
     public bool IsInZone => _temp >= zoneMin && _temp <= zoneMax;
 
     [HideInInspector] public float FireInput;
 
-    private float _temp;
+    public float _temp; // потом поменять
     private float _tempVelocity;
 
     private void Start()
@@ -47,10 +51,16 @@ public class TemperatureController : MonoBehaviour
         ApplyCooling();
         UpdateTemperaturePhysics();
         UpdateNeedle();
+        UpdateTurkaTemp(); // передаём темпу турке
 
         FireInput = _temp;
         
         Debug.Log(waterCooling);
+    }
+
+    private void UpdateTurkaTemp()
+    {
+        turka.currentCoffeeState.temperature = _temp * 100;
     }
 
     private void HandleScroll()
