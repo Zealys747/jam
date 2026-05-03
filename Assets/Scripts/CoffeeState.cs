@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CoffeeState : MonoBehaviour
+public class CoffeeState
 {
     public float beanPerCent;
     public float filledWaterPerCent;

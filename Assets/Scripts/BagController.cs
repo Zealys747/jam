@@ -120,10 +120,9 @@ public class BagController : MonoBehaviour
     {
         turka.currentCoffeeState.beanPerCent += beanFillSpeed / 10 * Time.deltaTime;
 
-        if (turka.currentCoffeeState.beanPerCent > 1)
+        if ((turka.currentCoffeeState.beanPerCent + turka.currentCoffeeState.filledWaterPerCent) > 1)
         {
-            turka.currentCoffeeState.beanPerCent = 1;
-            return;
+            turka.currentCoffeeState.beanPerCent = 1 - turka.currentCoffeeState.filledWaterPerCent;
         }
     }
     private void SpawnBean()
