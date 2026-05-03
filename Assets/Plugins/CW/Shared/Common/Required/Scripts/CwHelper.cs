@@ -125,7 +125,11 @@ namespace CW.Common
 			where T : Object
 		{
 #if CW_HAS_NEW_FIND
+#if UNITY_6000_0_OR_NEWER
+			return Object.FindObjectsByType<T>();
+#else
 			return Object.FindObjectsByType<T>(FindObjectsSortMode.None);
+#endif
 #else
 			return Object.FindObjectsOfType<T>();
 #endif

@@ -44,6 +44,28 @@ public class BagController : MonoBehaviour
     
     private List<(GameObject obj, float spawnTime)> _beans = new();
 
+    public IEnumerable<Rigidbody> ActiveBeanBodies
+    {
+        get
+        {
+            for (int i = _beans.Count - 1; i >= 0; i--)
+            {
+                GameObject obj = _beans[i].obj;
+
+                if (obj == null)
+                {
+                    _beans.RemoveAt(i);
+                    continue;
+                }
+
+                if (!obj.activeInHierarchy) continue;
+
+                Rigidbody body = obj.GetComponent<Rigidbody>();
+                if (body != null) yield return body;
+            }
+        }
+    }
+
     void Start()
     {
         _mouse = Mouse.current;
@@ -129,7 +151,8 @@ public class BagController : MonoBehaviour
                 col.material = beanMaterial;
         }
 
-        Rigidbody rb = bean.AddComponent<Rigidbody>();
+        Rigidbody rb = bean.GetComponent<Rigidbody>();
+        if (rb == null) rb = bean.AddComponent<Rigidbody>();
         rb.mass = beanMass;
         rb.angularDamping = 1f;
 
@@ -171,6 +194,11 @@ public class BagController : MonoBehaviour
                     {
                         Debug.Log("not in turka");
                     }
+                    Destroy(obj);
+                    _beans.RemoveAt(i);
+                }
+                else if (expired)
+                {
                     Destroy(obj);
                     _beans.RemoveAt(i);
                 }

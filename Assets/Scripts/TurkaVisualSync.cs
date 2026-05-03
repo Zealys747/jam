@@ -16,7 +16,7 @@ public class TurkaVisualSync : MonoBehaviour
         _burnerRoot = burnerRoot;
         _turka = turka;
         _rb = turka != null ? turka.GetComponent<Rigidbody>() : null;
-        _syncEnabled = syncEnabled;
+        _syncEnabled = syncEnabled && tiltTurkaVisual;
         _ready = false;
     }
 

@@ -119,7 +119,11 @@ public class BurnerTiltController : MonoBehaviour
         if (string.IsNullOrWhiteSpace(objectName)) return null;
 
         Transform firstMatch = null;
+#if UNITY_6000_0_OR_NEWER
+        Transform[] transforms = FindObjectsByType<Transform>();
+#else
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsSortMode.None);
+#endif
         foreach (Transform candidate in transforms)
         {
             if (candidate == null || candidate.name != objectName) continue;
