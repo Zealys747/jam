@@ -43,6 +43,8 @@ public class BagController : MonoBehaviour
     
     
     private List<(GameObject obj, float spawnTime)> _beans = new();
+    public IReadOnlyList<Rigidbody> ActiveBeanBodies => _activeBodies;
+    private List<Rigidbody> _activeBodies = new();
 
     void Start()
     {
@@ -134,6 +136,7 @@ public class BagController : MonoBehaviour
         rb.angularDamping = 1f;
 
         _beans.Add((bean, Time.time));
+        _activeBodies.Add(rb);
    
     }
 
@@ -173,6 +176,7 @@ public class BagController : MonoBehaviour
                     }
                     Destroy(obj);
                     _beans.RemoveAt(i);
+                    _activeBodies.RemoveAll(r => r == null);
                 }
             }
         }
