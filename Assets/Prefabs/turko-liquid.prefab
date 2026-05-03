@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5085700043642468270}
   - component: {fileID: 8128883919002996388}
   - component: {fileID: 7688818784460272397}
-  - component: {fileID: 2135083875182991860}
+  - component: {fileID: 2304136941847142571}
   m_Layer: 0
   m_Name: turko-liquid
   m_TagString: Untagged
@@ -141,6 +141,7 @@ Transform:
   m_Children:
   - {fileID: 3868908771008986919}
   - {fileID: 9031121103842584428}
+  - {fileID: 2607722242273305477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5085700043642468270
@@ -223,7 +224,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3745154151119582752, guid: ba7329d9c490ec5499a8fbcb5b55d4ea, type: 3}
---- !u!114 &2135083875182991860
+--- !u!114 &2304136941847142571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,11 +233,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 975127957558934542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41d79cc9e90a6bd2b99f32d4c92e558, type: 3}
+  m_Script: {fileID: 11500000, guid: 67b333fe0325e8844ae64c7ddacb1129, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BeanLifetime
-  _turkaRadius: 0
-  _turkaTransform: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Turka
+  material: {fileID: 2100000, guid: f0089db1b2a40e34fb8fa94ac680b449, type: 2}
+  completion: 0
+  currentCompletionSpeed: 0
+  currentErrorCoef: 0
+  currentCoffeeState: {fileID: 0}
+  coffeeOrder: {fileID: 0}
+  minCompletionSpeed: 5
+  maxCompletionSpeed: 15
+  maxErrorCoef: 20
+--- !u!1 &5693505101606109196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2607722242273305477}
+  - component: {fileID: 8639995231209674802}
+  - component: {fileID: 9090905581537734654}
+  m_Layer: 0
+  m_Name: BlackHole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2607722242273305477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693505101606109196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0152}
+  m_LocalScale: {x: 0.023983784, y: 0.020312652, z: 0.0049663223}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8251345140348527698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8639995231209674802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693505101606109196}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9090905581537734654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693505101606109196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f035d19a19b5bba1b11cd162e74df4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlackHole
+  pullForce: 15
+  pullRadius: 1
 --- !u!1 &6912483357688953983
 GameObject:
   m_ObjectHideFlags: 0
