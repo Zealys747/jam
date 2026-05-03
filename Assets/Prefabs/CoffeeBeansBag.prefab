@@ -278,8 +278,8 @@ MonoBehaviour:
   spawnRate: 6
   beanMass: 0.1
   beanMaterial: {fileID: 13400000, guid: 62d1165a2cb20f9e6a556cf30dcc899c, type: 2}
-  beanCheckDelay: 1.2
-  beanMaxLifetime: 5
+  beanCheckDelay: 0.2
+  beanMaxLifetime: 1
   turkaTransform: {fileID: 0}
   turkaRadius: 0.5
   _isLifted: 0
